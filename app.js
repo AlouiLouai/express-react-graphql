@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const { graphqlHTTP } = require("express-graphql");
 const { buildSchema } = require("graphql");
+const mongoose = require("mongoose");
 
 const app = express();
 
@@ -53,13 +54,22 @@ app.use(
           price: +args.eventInput.price,
           date: args.eventInput.date,
         };
-        console.log(args)
+        console.log(args);
         events.push(event);
-        return event
+        return event;
       },
     },
     graphiql: true,
   })
 );
 
-app.listen(3000);
+mongoose
+  .connect(
+    `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@eventscluster.pileiwf.mongodb.net/?retryWrites=true&w=majority`
+  )
+  .then(() => {
+    app.listen(3000);
+  })
+  .catch((err) => {
+    console.log(err);
+  });

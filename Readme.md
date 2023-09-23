@@ -25,6 +25,7 @@ List the key features of your project.
 
 - implement express server
 - configure graphql
+- configure mongoDb with mongoose
 
 ## Technologies
 
@@ -32,6 +33,8 @@ Mention the technologies and libraries you've used in your project. For example:
 
 - Node.js
 - Express.js
+- MongoDB
+- Mongoose
 - GraphQL
 - React
 - JSON Web Tokens (JWT)
