@@ -45,6 +45,10 @@ Mention the technologies and libraries you've used in your project. For example:
 
 Provide detailed installation instructions. Include any dependencies that need to be installed and how to set up your environment.
 
+- create a nodemon.json file at the root 
+- past the structure from nodemon.exemple.json
+- replace with your custom credentials
+
 ```bash
 # Clone the repository
 git clone https://github.com/AlouiLouai/express-react-graphql
