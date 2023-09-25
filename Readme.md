@@ -36,7 +36,7 @@ Mention the technologies and libraries you've used in your project. For example:
 - MongoDB
 - Mongoose
 - GraphQL
-- React
+- React ( vite )
 - JSON Web Tokens (JWT)
 
 ## Getting Started
