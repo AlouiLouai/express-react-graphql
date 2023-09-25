@@ -11,27 +11,30 @@ import {
 import ErrorPage from "./pages/Error.jsx";
 import EventsPage from "./pages/Events.jsx";
 import BookingsPage from "./pages/Bookings.jsx";
+import MainNavigation from "./components/Navigation/MainNavigation.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <MainNavigation />,
     errorElement: <ErrorPage />,
-  },
-  {
-    path: "/auth",
-    element: <AuthPage />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/events",
-    element: <EventsPage />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/bookings",
-    element: <BookingsPage />,
-    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/auth",
+        element: <AuthPage />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "/events",
+        element: <EventsPage />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "/bookings",
+        element: <BookingsPage />,
+        errorElement: <ErrorPage />,
+      },
+    ],
   },
 ]);
 
