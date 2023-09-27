@@ -1,12 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
 import AuthPage from "./pages/Auth.jsx";
 import "./index.css";
 import {
   createBrowserRouter,
   RouterProvider,
-  redirect,
 } from "react-router-dom";
 import ErrorPage from "./pages/Error.jsx";
 import EventsPage from "./pages/Events.jsx";
@@ -20,11 +18,6 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/auth",
-        element: <AuthPage />,
-        errorElement: <ErrorPage />,
-      },
-      {
         path: "/events",
         element: <EventsPage />,
         errorElement: <ErrorPage />,
@@ -35,6 +28,11 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
       },
     ],
+  },
+  {
+    path: "/auth",
+    element: <AuthPage />,
+    errorElement: <ErrorPage />,
   },
 ]);
 
