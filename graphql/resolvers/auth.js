@@ -19,7 +19,7 @@ module.exports = {
       const result = await user.save();
       return { ...result._doc, password: null, _id: result.id };
     } catch (error) {
-      throw err;
+      throw error;
     }
   },
   login: async ({ email, password }) => {

@@ -4,10 +4,10 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { NavLink, Outlet } from "react-router-dom";
 
 const navigation = [
-  { name: "Dashboard", href: "#", current: true },
-  { name: "Team", href: "#", current: false },
-  { name: "Projects", href: "#", current: false },
-  { name: "Calendar", href: "#", current: false },
+  { name: "Dashboard", href: "/", current: true },
+  { name: "Events", href: "/events", current: false },
+  { name: "Bookings", href: "/bookings", current: false },
+  { name: "About", href: "#", current: false },
 ];
 
 function classNames(...classes) {
@@ -163,24 +163,6 @@ const mainNavigation = (props) => (
         </>
       )}
     </Disclosure>
-    <header className="main-navigation">
-      <div className="main-navigation__logo">
-        <h1>EasyEvent</h1>
-      </div>
-      <nav className="main-navigation__items">
-        <ul>
-          <li>
-            <NavLink to={"/auth"}>Auth</NavLink>
-          </li>
-          <li>
-            <NavLink to={"/events"}>Events</NavLink>
-          </li>
-          <li>
-            <NavLink to={"/bookings"}>Bookings</NavLink>
-          </li>
-        </ul>
-      </nav>
-    </header>
     <div id="main-vite-app">
       <Outlet />
     </div>
