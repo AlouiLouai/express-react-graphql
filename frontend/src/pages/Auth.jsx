@@ -1,11 +1,25 @@
 import React, { Component } from "react";
+import AuthContext from "../context/auth-context";
 
 class AuthPage extends Component {
+  state = {
+    isLogin: true,
+  };
+
+  static contextType = AuthContext;
+
   constructor(props) {
     super(props);
     this.emailEl = React.createRef();
     this.passwordEl = React.createRef();
-  }
+  };
+
+  switchModeHandler = () => {
+    this.setState(prevState => {
+      return { isLogin: !prevState.isLogin };
+    });
+  };
+
   submitHandler = (event) => {
     event.preventDefault();
     const email = this.emailEl.current.value;
@@ -15,16 +29,30 @@ class AuthPage extends Component {
       return;
     }
 
-    const requestBody = {
+    let requestBody = {
       query: `
-        mutation {
-          createUser(userInput: {email: "${email}", password: "${password}"}){
-            _id
-            email
+        query {
+          login(email: "${email}", password: "${password}") {
+            userId
+            token
+            tokenExpiration
           }
         }
-      `,
+      `
     };
+
+    if(!this.state.isLogin){
+      requestBody = {
+        query: `
+          mutation {
+            createUser(userInput: {email: "${email}", password: "${password}"}) {
+              _id
+              email
+            }
+          }
+        `
+      };
+    }
 
     fetch("http://localhost:3000/graphql", {
       method: "POST",
@@ -124,12 +152,12 @@ class AuthPage extends Component {
             </form>
 
             <p className="mt-10 text-center text-sm text-gray-500">
-              Already have account?{" "}
+              Switch to {" "}
               <a
                 href="#"
                 className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
               >
-                login
+                {this.state.isLogin ? 'Signup' : 'Login'}
               </a>
             </p>
           </div>
